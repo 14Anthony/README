@@ -58,9 +58,10 @@ const questions = [
             { name: 'GPL' },
             { name: 'other' }
         ],
+        //RD:  Here I am creating a function that will make sure that atleast on choice is chosen with an if statement.       
         validate: function (answer) {
             if (answer.length < 1) {
-                return ('Please choose a licensing option')
+                return ('You must be licensed')
             }
         }
     },
