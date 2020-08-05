@@ -6,95 +6,91 @@ const generateMarkdown = require('./utils/generateMarkdown');
 
 // array of questions for user
 const questions = [
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                name: 'title',
-                message: 'What should we name your project?',
-            }
-                .then(answers => {
-                    console.log('Answer:', answers.title);
-                })
-        ])
-        .prompt([
-            {
-                type: 'editor',
-                name: 'description',
-                message: 'In detail as the editor opens give a description of your project',
+    // RD:  I must create a question that lies within the array
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What should we name your project?',
+    },
+    // RD:  I must create a question that lies within the array by using editor it allows people to enter in more text, by opening notepad
 
-            }
-                .then(answers => {
-                    console.log('Answer: ', answers.description);
-                })
-        ])
-        .prompt([
-            {
-                type: 'checkbox',
-                name: 'tableOfContents',
-                message: ' Which of the following would you like included in your table of contents',
-                choices: [
-                    'Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions',
-                ],
-            }
-                .then(answers => {
-                    console.log('Answer:  ', answers.tableOfContents);
-                })
-        ])
-        .prompt([
-            {
-                type: 'editor',
-                name: 'usage',
-                message: ' What is the appropriate usage for this project',
-            }
-                .then(answers => {
-                    console.log('Answer:  ', answers.usage);
-                })
-        ])
-        .prompt([
-            {
-                type: 'checkbox',
-                name: 'license',
-                message: 'Please check with license is associated with your project.',
-                choices: [
-                    'MIT', 'Apache', 'other',
-                ],
-            }
-                .then(answers => {
-                    console.log('Answer:  ', answers.license);
+    {
+        type: 'editor',
+        name: 'description',
+        message: 'In detail as the editor opens give a description of your project',
 
-                })
-        ])
-        .prompt([
-            {
-                type: 'input',
-                name: 'contributing',
-                message: 'Who where the contributing parties',
+    },
+    // RD:  I must create a question that lies within the array
+
+    {
+        type: 'checkbox',
+        name: 'tableOfContents',
+        message: ' Which of the following would you like included in your table of contents',
+        choices: [
+            'Installation', 'Usage', 'License', 'Contributor', 'Tests', 'Questions',
+        ],
+
+        //RD:  Here I am creating a function that will make sure that atleast on choice is chosen with an if statement.        
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return ('Your table of contents must have atleast one content')
             }
-                .then(answers => {
-                    console.log('Answer:', answers.contributing);
-                })
-        ])
-        .prompt([
-            {
-                type: 'input',
-                name: 'tests',
-                message: 'What testing was implemented?',
+        }
+    },
+
+    // RD:  I must create a question that lies within the array by using editor it allows people to enter in more text, by opening notepad
+
+    {
+        type: 'editor',
+        name: 'usage',
+        message: ' What is the appropriate usage for this project',
+    },
+
+    // RD:  I must create a question that lies within the array
+
+    {
+        type: 'checkbox',
+        name: 'license',
+        message: 'Please check with license is associated with your project.',
+        choices: [
+            { name: 'MIT' },
+            { name: 'Apache' },
+            { name: 'GPL' },
+            { name: 'other' }
+        ],
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return ('Please choose a licensing option')
             }
-                .then(answers => {
-                    console.log('Answer:', answers.testing);
-                })
-        ])
-        .prompt([
-            {
-                type: 'input',
-                name: 'questions',
-                message: 'What questions remain?',
-            }
-                .then(answers => {
-                    console.log('Answer:', answers.questions);
-                })
-        ])
+        }
+    },
+
+    // RD:  I must create a question that lies within the array
+
+    {
+        type: 'input',
+        name: 'contributor',
+        message: 'Please list each contributor separated by a comma',
+        when: function (answers) {
+            return answers.contributors;
+        },
+
+    },
+    // RD:  I must create a question that lies within the array
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'What testing was implemented?',
+    },
+
+    // RD:  I must create a question that lies within the array
+
+    {
+        type: 'input',
+        name: 'questions',
+        message: 'What questions remain?',
+    },
+
 ];
 
 // function to write README file
