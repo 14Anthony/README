@@ -31,11 +31,11 @@ const questions = [
         ],
 
         //RD:  Here I am creating a function that will make sure that atleast on choice is chosen with an if statement.        
-        validate: function (answer) {
-            if (answer.length < 1) {
-                return ('Your table of contents must have atleast one content')
-            }
-        }
+        // validate: function (answer) {
+        //     if (answer.length < 1) {
+        //         return ('Your table of contents must have atleast one content')
+        //     }
+        // }
     },
 
     // RD:  I must create a question that lies within the array by using editor it allows people to enter in more text, by opening notepad
@@ -59,11 +59,11 @@ const questions = [
             { name: 'other' }
         ],
         //RD:  Here I am creating a function that will make sure that atleast on choice is chosen with an if statement.       
-        validate: function (answer) {
-            if (answer.length < 1) {
-                return ('You must be licensed')
-            }
-        }
+        // validate: function (answer) {
+        //     if (answer.length < 1) {
+        //         return ('You must be licensed')
+        //     }
+        // }
     },
 
     // RD:  I must create a question that lies within the array
@@ -94,13 +94,27 @@ const questions = [
 
 ];
 
+
 // function to write README file
 function writeToFile(fileName, data) {
 }
 
 // function to initialize program
 function init() {
+    inquirer
+        .prompt(questions)
+        .then(answers => {
+            console.log(answers.tests)
+            console.log(answers);
+            generateMarkdown();
+            const fileName = `${answers.title}` + '.md'
+            console.log(fileName);
+            writeToFile(fileName, answers);
 
+        })
+        .catch(error => {
+
+        })
 }
 
 // function call to initialize program
