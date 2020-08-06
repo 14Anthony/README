@@ -89,7 +89,7 @@ const questions = [
     {
         type: 'input',
         name: 'questions',
-        message: 'What questions remain?',
+        message: 'What questions remain?  Please enter email address, and comma seperate your github username.',
     },
 
 ];
