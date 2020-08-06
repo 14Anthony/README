@@ -49,21 +49,11 @@ const questions = [
     // RD:  I must create a question that lies within the array
 
     {
-        type: 'checkbox',
+        type: 'Input',
         name: 'license',
-        message: 'Please check with license is associated with your project.',
-        choices: [
-            { name: 'MIT' },
-            { name: 'Apache' },
-            { name: 'GPL' },
-            { name: 'other' }
-        ],
-        //RD:  Here I am creating a function that will make sure that atleast on choice is chosen with an if statement.       
-        // validate: function (answer) {
-        //     if (answer.length < 1) {
-        //         return ('You must be licensed')
-        //     }
-        // }
+        message: 'Please check with license is associated with your project.( MIT, APACHE, GPL, OTHER)',
+
+
     },
 
     // RD:  I must create a question that lies within the array
@@ -72,16 +62,16 @@ const questions = [
         type: 'input',
         name: 'contributor',
         message: 'Please list each contributor separated by a comma',
-        when: function (answers) {
-            return answers.contributors;
-        },
+        // when: function (answers) {
+        //     return answers.contributors;
+        // },
 
     },
     // RD:  I must create a question that lies within the array
     {
-        type: 'input',
+        type: 'confirm',
         name: 'tests',
-        message: 'What testing was implemented?',
+        message: 'Was testing was implemented?',
     },
 
     // RD:  I must create a question that lies within the array
@@ -89,7 +79,7 @@ const questions = [
     {
         type: 'input',
         name: 'questions',
-        message: 'What questions remain?  Please enter email address, and comma seperate your github username.',
+        message: 'For Questions, please enter email address, and comma seperate your github username.',
     },
 
 ];
