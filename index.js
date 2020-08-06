@@ -96,7 +96,38 @@ const questions = [
 
 
 // function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(fileName, answers) {
+    fs.appendFile(fileName,
+        `# ${answers.title}` +
+        '\n' +
+        '\n' +
+        `# ${answers.description}` +
+        '\n' +
+        '\n' +
+        `# ${answers.tableOfContents}` +
+        '\n' +
+        '\n' +
+        `# ${answers.usage}` +
+        '\n' +
+        '\n' +
+        `# ${answers.license}` +
+        '\n' +
+        '\n' +
+        `# ${answers.contributor}` +
+        '\n' +
+        '\n' +
+        `# ${answers.tests}` +
+        '\n' +
+        '\n' +
+        `# ${answers.questions}`,
+        function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log("Commit logged!");
+            }
+        });
 }
 
 // function to initialize program
@@ -104,18 +135,27 @@ function init() {
     inquirer
         .prompt(questions)
         .then(answers => {
+            generateMarkdown(answers);
+            const fileName = `${answers.title}` + '.md'
+            writeToFile(fileName, answers);
+
+
             console.log(answers.tests)
             console.log(answers);
             generateMarkdown();
-            const fileName = `${answers.title}` + '.md'
             console.log(fileName);
             writeToFile(fileName, answers);
 
         })
         .catch(error => {
+            if (error.isTtyError) {
 
-        })
-}
+            } else {
+
+            }
+
+        });
+};
 
 // function call to initialize program
 init();
