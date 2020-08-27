@@ -1,6 +1,8 @@
-# Anthony's README
+# Anthony README
 
-# GIVEN a command-line application that accepts user input
+# DESCRIPTION:
+
+GIVEN a command-line application that accepts user input
 
 WHEN you are prompted for information about your application repository
 THEN a quality, professional README.md is generated with the title of your project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
@@ -21,18 +23,24 @@ WHEN  you enter your email address
 THEN this is added to the section of the README entitled Questions,
 
 
+
 # Installation,Usage,License,Contributor,Tests,Questions
 
-# This project is use to develop a quick and professional 
+# USAGE:
 
-readme for those who would like to know, using the command line as an 
 
-interface for the program initializations.
+This is a tool to be able to create a readme at any point throughout a project.
 
-# LICENSE MIT
+Many it is easier they say to be taught how things work.  It is much better than being
+
+told to just go google it.  what happens if google breaks, well here is a readme. that 
+
+give instructions.  and hopefully teaches.
+
+# LICENESES : MIT
 
 # @bigchsta62
 
 # true
 
-# Questions, belcastt@live.com, @14Anthony
+# QUESTIONS:    Belcastt@live.com, @14Anthony
